@@ -33,7 +33,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   String inputText = '';
   String inputText2 = '';
-  String inputText3 = '';
 
   @override
   Widget build(BuildContext context) {
@@ -115,33 +114,20 @@ class _MyHomePageState extends State<MyHomePage> {
                   context: context,
                   barrierDismissible: false,
                   builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: const Text(
-                        '選んでいただいたものは',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      content: Padding(
-                        padding: const EdgeInsets.only(top: 6.0),
-                        child: Container(
-                          height: 170,
+                    if (inputText == '' || inputText2 == '') {
+                      return AlertDialog(
+                        content: Container(
+                          height: 150,
                           child: Column(
                             children: [
-                              Container(
-                                child: Text(
-                                  '$resultValue',
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.normal),
-                                ),
-                              ),
+                              Text('迷っていることを入力してね'),
                               Padding(
                                 padding: EdgeInsets.only(top: 40),
-                                child: Container(
-                                  width: 100,
-                                  height: 100,
+                                child: SizedBox(
+                                  width: 85,
+                                  height: 85,
                                   child: Image.asset(
-                                    'images/black-cat.png',
+                                    'images/cool.png',
                                     fit: BoxFit.contain,
                                   ),
                                 ),
@@ -149,32 +135,79 @@ class _MyHomePageState extends State<MyHomePage> {
                             ],
                           ),
                         ),
-                      ),
-                      actions: <Widget>[
-                        // TextButton(
-                        //   child: const Text('閉じる', style: TextStyle(color: Colors.blueAccent),),
-                        //   onPressed: () => Navigator.of(context).pop(0),
-                        // ),
-                        TextButton(
-                          child: const Text(
-                            'OK',
-                            style: TextStyle(color: Colors.blueAccent),
+                        actions: <Widget>[
+                          TextButton(
+                            child: const Text(
+                              'OK',
+                              style: TextStyle(color: Colors.blueAccent),
+                            ),
+                            onPressed: () => Navigator.of(context).pop(1),
                           ),
-                          onPressed: () => Navigator.of(context).pop(1),
+                        ],
+                      );
+                      ;
+                    } else {
+                      return AlertDialog(
+                        title: const Text(
+                          '選んでいただいたものは',
+                          style: TextStyle(fontSize: 16),
                         ),
-                      ],
-                    );
+                        content: Padding(
+                          padding: const EdgeInsets.only(top: 6.0),
+                          child: Container(
+                            height: 170,
+                            child: Column(
+                              children: [
+                                Container(
+                                  child: Text(
+                                    '$resultValue',
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.normal),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(top: 40),
+                                  child: Container(
+                                    width: 100,
+                                    height: 100,
+                                    child: Image.asset(
+                                      'images/cool.png',
+                                      fit: BoxFit.contain,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        actions: <Widget>[
+                          // TextButton(
+                          //   child: const Text('閉じる', style: TextStyle(color: Colors.blueAccent),),
+                          //   onPressed: () => Navigator.of(context).pop(0),
+                          // ),
+                          TextButton(
+                            child: const Text(
+                              'OK',
+                              style: TextStyle(color: Colors.blueAccent),
+                            ),
+                            onPressed: () => Navigator.of(context).pop(1),
+                          ),
+                        ],
+                      );
+                    }
                   },
                 );
               },
             ),
             Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Container(
+              padding: const EdgeInsets.only(top: 20),
+              child: SizedBox(
                 width: 170,
                 height: 170,
                 child: Image.asset(
-                  'images/black-cat.png',
+                  'images/cool.png',
                   fit: BoxFit.contain,
                 ),
               ),
